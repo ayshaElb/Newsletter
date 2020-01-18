@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Newsletters {{newsletter.name}} {% endblock %}
+
+{% block body %}
+    <h3>Bonjour {{subscriber.firstname}} !</h3>
+  
+    <div>Vous recevez cet email car vous êtes abonné aux newsletters  : 
+        {% for type in subscriber.types %}
+        <li>{{type.name}}</li>
+        {% endfor %}
+        Ce n’est pas du SPAM :)
+    </div>
+
+    <form action="{{ path('delete') }}" method="post" onsubmit="return confirm('Voulez vous vraiment vous desinscrire ?');">
+        <input type="hidden" name="token" value="{{ csrf_token('delete') }}">
+        <button type="submit" class="btn btn-primary justify-content-center delete__button">Cliquez ici pour vous désinscrire</button>
+    </form>
+    <a href="{{ path('subscriber', { 'id': subscriber.id })}}">Cliquez ici pour modifier vos abonnements</a>
+    
+{% endblock %}
+            
+    

@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Newsletters{% endblock %}
+
+{% block body %}
+<p>Vous êtes abonnés à la newsletter </p>
+
+
+<p>Bonjour {{subscriber.firstname}} !</p> 
+
+<p>
+    Vous avez été inscrit avec succès aux newsletters : 
+    {% for type in subscriber.types %}
+    <li> {{type.name}}</li>
+    {% endfor %}
+
+
+Merci!
+</p>
+
+{% endblock %}

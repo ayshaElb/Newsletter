@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Newsletters{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Voici la liste de vos abonnements {{subscriber.firstname}}</h1>
+        <table class="table table-responsive text-center">
+            <thead>
+                <tr>
+                   <th scope="col">Les newsletters </th> 
+                   <th scope="col">Se desinscrire</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for type in subscriber.types %}
+                <tr>
+                    <td>{{type.name}}</td>
+                    <td>
+                        <form action="{{ path('delete')}}" method="post" onsubmit="return confirm('Voulez vous vraiment vous désinscrire ?');">
+                            <input type="hidden" name="token" value="{{ csrf_token('delete') }}">
+                            <button type="submit" class="btn justify-content-center delete__button">cliquez</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+</div>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Newsletters{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Les newsletters</h1>
+    {% for newsletter in newsletters %}
+    <div class="card m-2">
+            <div class="font-weight-bold">{{newsletter.name}}</div>
+            <div class="card-body"> Les abonnés :
+                {% for subscriber in newsletter.subscribers %}
+                <li>{{subscriber.firstname}}</li>
+                {% endfor %}
+            </div>
+            <button class="btn btn-secondary mx-auto"><a class="text-dark" href="{{ path('share', { 'id': newsletter.id })}}">Envoyer la newsletter</a></button>
+    </div>
+    {% endfor %}
+  
+
+</div>
+
+{% endblock %}

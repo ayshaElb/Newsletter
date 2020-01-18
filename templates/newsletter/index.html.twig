@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Newsletters{% endblock %}
+
+{% block body %}
+<div class="container">
+
+        <h1>S'incrire aux newsletters</h1>
+    
+        {{ form_start(form) }}    
+        {{ form_widget(form) }}    
+
+        <button class="btn btn-secondary">{{ button_label|default('Souscrire') }}</button>
+        {{ form_end(form) }}
+</div>
+
+{% endblock %}
